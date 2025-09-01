@@ -1,6 +1,7 @@
 import { Info, Moon, Sun } from "lucide-react";
 import { useEffect, useState } from "react";
 import { FcGoogle } from "react-icons/fc";
+import fmac from '../assets/fmac.png'
 
 const Login2 = () => {
   const [darkMode, setDarkMode] = useState(false);
@@ -21,17 +22,18 @@ const Login2 = () => {
     <div className="bg-gray-100 dark:bg-gray-900 text-gray-800 dark:text-white transition duration-300">
       <div className="flex min-h-screen bg-gray-100 dark:bg-gray-900">
         {/*login image*/}
-        <div
+        <img className="hidden lg:block lg:w-1/2 bg-cover bg-center" src={fmac} alt="bg-mac" />
+        {/* <div
           className="hidden lg:block lg:w-1/2 bg-cover bg-center"
           style={{
             backgroundImage:
-              "url('https://th.bing.com/th/id/OIP.iCwBT7GNSs9tGfhkesETgwHaEK?w=299&h=180&c=7&r=0&o=7&pid=1.7&rm=3')",
+              `url('${fmac}')`,
           }}
         >
           <div className="flex justify-center items-center w-full h-full bg-black bg-opacity-50">
             <h2 className="text-4xl font-bold text-white">Bienvenido YoMAC</h2>
           </div>
-        </div>
+        </div> */}
 
         {/*Login Form*/}
         <div className="flex flex-col justify-center items-center w-full lg:w-1/2 p-6 relative">
@@ -39,7 +41,7 @@ const Login2 = () => {
           <div className="absolute top-6 right-6">
             <button
               onClick={toggleTheme}
-              className="bg-gray-300 dark:bg-gray-700 text-gray-800 dark:text-white px-4 py-2 rounded-lg shadow hover:bg-gray-400 dark:hover:bg-gray-600 transition flex items-center space-x-2"
+              className="bg-gray-300 dark:bg-gray-700 text-gray-800 dark:text-white px-4 py-2 rounded-lg shadow hover:bg-gray-400 dark:hover:bg-gray-600 transition flex items-center space-x-2 cursor-pointer"
             >
               {darkMode ? (
                 <Sun className="text-yellow-500" size={20} />
@@ -56,7 +58,7 @@ const Login2 = () => {
             {/* Botón Google */}
             <button
               className="flex items-center justify-center gap-2 w-full border border-gray-300 dark:border-gray-600 px-4 py-2 rounded-lg shadow-sm 
-                   hover:bg-gray-100 dark:hover:bg-gray-700 transition"
+                   hover:bg-gray-100 dark:hover:bg-gray-700 transition cursor-pointer"
             >
               <FcGoogle size={24} />
               <span className="text-gray-700 dark:text-white font-medium">
@@ -81,6 +83,9 @@ const Login2 = () => {
             </div>
           </div>
         </div>
+
+             
+
       </div>
     </div>
   );
