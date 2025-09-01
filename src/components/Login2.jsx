@@ -22,7 +22,7 @@ const Login2 = () => {
     <div className="bg-gray-100 dark:bg-gray-900 text-gray-800 dark:text-white transition duration-300">
       <div className="flex min-h-screen bg-gray-100 dark:bg-gray-900">
         {/*login image*/}
-        <img className="hidden lg:block lg:w-1/2 bg-cover bg-center" src={fmac} alt="bg-mac" />
+        <img className="hidden lg:block lg:w-1/2 bg-cover bg-center" src={fmac} alt="bg-mac" /> 
         {/* <div
           className="hidden lg:block lg:w-1/2 bg-cover bg-center"
           style={{
