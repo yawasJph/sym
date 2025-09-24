@@ -18,7 +18,7 @@ function App() {
     <>
       <BrowserRouter>
          <Routes>
-          <Route path="/sym/" element={<HomeLayout />}>
+          <Route path="/" element={<HomeLayout />}>
             <Route index element={<Middlebar />} />
             <Route path="profile" element={<Profile />} />
             <Route path="edit-profile" element={<EditProfilePage />} />
