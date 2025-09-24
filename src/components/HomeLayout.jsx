@@ -1,21 +1,16 @@
+// HomeLayout.jsx
 import { useState } from "react";
-import { Image, Video, Smile, Heart, MessageCircle, Repeat, Share2, Search, Moon, Sun, Home, Users, Bell } from "lucide-react";
-import Middlebar from "./Middlebar";
-import Profile from "./Profile";
-import EditProfileModal from "./EditProfileModal";
-import EditProfilePage from "./EditProfilePage";
-import ChangePasswordPage from "./ChangePasswordPage";
-import UsersPage from "./Users";
-import UserProfile from "./UserProfile";
+import { Search, Moon, Sun, Home, Users, Bell, MessageCircle, UserPen, LockKeyhole } from "lucide-react";
+import { Outlet, Link } from "react-router-dom";
 
-export default function HomeI() {
+export default function HomeLayout() {
   const [darkMode, setDarkMode] = useState(false);
   const toggleTheme = () => setDarkMode(!darkMode);
 
   return (
-    <div className={`${darkMode ? "dark" : ""} `}>
+    <div className={`${darkMode ? "dark" : ""}`}>
       <div className="min-h-screen bg-gray-100 dark:bg-gray-900 text-gray-800 dark:text-white transition duration-300">
-        {/* 🔹 Navbar fijo (arriba) */}
+        {/* 🔹 Navbar */}
         <header className="fixed top-0 left-0 right-0 h-14 bg-white dark:bg-gray-800 shadow z-50 flex items-center justify-between px-4">
           <h1 className="text-lg font-bold text-emerald-600 dark:text-emerald-400">
             YoMAC
@@ -49,35 +44,32 @@ export default function HomeI() {
           </div>
         </header>
 
-        {/* 🔹 Layout principal */}
+        {/* 🔹 Layout */}
         <div className="pt-14 flex">
-          {/* Sidebar (solo desktop) */}
+          {/* Sidebar */}
           <aside className="hidden lg:flex lg:w-1/5 flex-col h-[calc(100vh-56px)] sticky top-14 p-6 bg-white dark:bg-gray-800 shadow">
             <nav className="flex flex-col gap-4">
-              <button className="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition">
+              <Link to="/sym/" className="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition">
                 <Home size={20} /> Inicio
-              </button>
-              <button className="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition">
-                <Users size={20} /> Amigos
-              </button>
-              <button className="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition">
-                <MessageCircle size={20} /> Mensajes
-              </button>
-              <button className="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition">
-                <Bell size={20} /> Notificaciones
-              </button>
+              </Link>
+               <Link to="/sym/profile" className="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition">            
+                <UserPen size={20} /> Perfil
+              </Link>
+              <Link to="/sym/users" className="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition">
+                <Users size={20} /> Usuarios
+              </Link>        
+              <Link to="/sym/change-password" className="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition">
+                <LockKeyhole size={20} /> Seguridad
+              </Link>
             </nav>
           </aside>
 
-          {/* Middlebar (Feed) */}
-          
+          {/* Middlebar dinámico */}
           <main className="flex-1 lg:w-3/5 p-6 min-h-screen">
-             <Profile/>
+            <Outlet />
           </main>
 
-          
-
-          {/* Rightbar (solo desktop) */}
+          {/* Rightbar */}
           <aside className="hidden lg:flex lg:w-1/5 flex-col h-[calc(100vh-56px)] sticky top-14 p-6 bg-white dark:bg-gray-800 shadow">
             <h3 className="font-semibold mb-4">Personas sugeridas</h3>
             <div className="flex flex-col gap-3">
@@ -97,20 +89,20 @@ export default function HomeI() {
           </aside>
         </div>
 
-        {/* 🔹 Barra inferior fija (solo mobile) */}
+         {/* 🔹 Barra inferior fija (solo mobile) */}
         <nav className="lg:hidden fixed bottom-0 left-0 right-0 h-14 bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 flex justify-around items-center z-50">
-          <button className="p-2 text-emerald-600 dark:text-emerald-400">
+          <Link to="/sym/" className="p-2 text-emerald-600 dark:text-emerald-400">
             <Home size={22} />
-          </button>
-          <button className="p-2 text-gray-600 dark:text-gray-300">
+          </Link>
+          <Link to="/sym/profile" className="p-2 text-gray-600 dark:text-gray-300">
+            <UserPen size={20} />
+          </Link>
+          <Link to="/sym/users" className="p-2 text-gray-600 dark:text-gray-300">
             <Users size={22} />
-          </button>
-          <button className="p-2 text-gray-600 dark:text-gray-300">
-            <MessageCircle size={22} />
-          </button>
-          <button className="p-2 text-gray-600 dark:text-gray-300">
-            <Bell size={22} />
-          </button>
+          </Link>
+          <Link to="/sym/change-password" className="p-2 text-gray-600 dark:text-gray-300">
+            <LockKeyhole size={20} />
+          </Link>
         </nav>
       </div>
     </div>

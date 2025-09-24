@@ -9,9 +9,11 @@ export default function Navbar() {
   useEffect(() => {
     if (darkMode) {
       document.documentElement.classList.add("dark");
+      document.body.classList.add("dark"); // 👈 importante
       localStorage.setItem("theme", "dark");
     } else {
       document.documentElement.classList.remove("dark");
+      document.body.classList.remove("dark"); // 👈 importante
       localStorage.setItem("theme", "light");
     }
   }, [darkMode]);
@@ -25,13 +27,22 @@ export default function Navbar() {
 
       {/* Menú */}
       <nav className="hidden md:flex space-x-6">
-        <a href="#" className="text-gray-800 dark:text-gray-200 hover:underline">
+        <a
+          href="#"
+          className="text-gray-800 dark:text-gray-200 hover:underline"
+        >
           Inicio
         </a>
-        <a href="#" className="text-gray-800 dark:text-gray-200 hover:underline">
+        <a
+          href="#"
+          className="text-gray-800 dark:text-gray-200 hover:underline"
+        >
           Productos
         </a>
-        <a href="#" className="text-gray-800 dark:text-gray-200 hover:underline">
+        <a
+          href="#"
+          className="text-gray-800 dark:text-gray-200 hover:underline"
+        >
           Contacto
         </a>
       </nav>
@@ -41,9 +52,16 @@ export default function Navbar() {
         onClick={() => setDarkMode(!darkMode)}
         className="bg-gray-200 dark:bg-gray-700 text-gray-900 dark:text-white px-3 py-2 rounded-lg shadow hover:bg-gray-300 dark:hover:bg-gray-600 transition flex items-center space-x-2"
       >
-        {darkMode ? <Sun size={20} className="text-yellow-500" /> : <Moon size={20} />}
+        {darkMode ? (
+          <Sun size={20} className="text-yellow-500" />
+        ) : (
+          <Moon size={20} />
+        )}
         <span className="text-sm">{darkMode ? "Claro" : "Oscuro"}</span>
+        
       </button>
+
+       
     </header>
   );
 }
